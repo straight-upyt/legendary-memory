@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "engine": "tsx src/engine.ts"
+  }
+}
+

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>QuantumTradeGuard</title>
+  <style>
+    body {
+      font-family: monospace;
+      background: #0b0f14;
+      color: #00ff9c;
+      padding: 20px;
+    }
+    .card {
+      border: 1px solid #00ff9c;
+      padding: 16px;
+      width: 400px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>🚀 QuantumTradeGuard</h1>
+
+<div class="card">
+  <div>Status: <span id="status">RUNNING</span></div>
+  <div>Symbol: <span id="symbol">-</span></div>
+  <div>Price: <span id="price">-</span></div>
+  <div>Source: <span id="source">-</span></div>
+  <div>Timestamp: <span id="ts">-</span></div>
+</div>
+
+<script>
+async function refresh() {
+  const res = await fetch("/api/market");
+  const data = await res.json();
+  if (!data) return;
+
+  symbol.textContent = data.symbol;
+  price.textContent = data.price;
+  source.textContent = data.source;
+  ts.textContent = new Date(data.ts).toLocaleTimeString();
+}
+
+setInterval(refresh, 1000);
+refresh();
+</script>
+
+</body>
+</html>

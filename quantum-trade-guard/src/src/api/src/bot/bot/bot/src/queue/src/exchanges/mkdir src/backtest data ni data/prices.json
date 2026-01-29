@@ -1,0 +1,12 @@
+import axios from "axios";
+
+if (process.env.LIVE_TRADING !== "true") {
+  throw new Error("🚫 LIVE TRADING BLOCKED");
+}
+
+export class BinanceExchange {
+  async placeOrder() {
+    // Real order logic here
+    console.log("⚠️ REAL ORDER SENT");
+  }
+}
